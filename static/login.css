@@ -1,0 +1,294 @@
+.message.info{
+    background:lightblue;
+	font-size: medium;
+	margin: 10px;
+	padding: 10px;
+    color:black
+}
+.message.error{
+    background:#d33a3a;
+	font-size: medium;
+	margin: 10px;
+	padding: 10px;
+    color :black;
+}
+.container{
+	margin: 100px 320px 100px 320px;
+}
+body{
+	background-image: url("\\static\\images\\car-wallpaper-14297320.jpg");
+}
+.row{
+	display: flex;
+	/* padding: 5px; */
+	background:white;
+	box-sizing: border-box;
+	border-radius: 10px;
+	box-shadow: 0px 0px 30px 0px black;
+}
+.col1{
+	flex-basis: 50%;
+	text-align: center;
+	padding: 50px 10px 50px 10px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	/* box-shadow: 0px 0px 20px 0px black; */
+}
+.col2{
+	flex-basis: 50%;
+	text-align: center;
+	padding: 140px 10px 50px 10px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	color: aliceblue;
+	background: linear-gradient(to right, #ff4b2b, #ff416c);
+	/* -webkit-background-clip: text; */
+	/* -webkit-text-fill-color: transparent; */
+	/* box-shadow: 0px 0px 20px 0px black; */
+	/* background: #d33a3a; */
+}
+.social{
+	border: 1px #d33a3a;
+	border-radius:50px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 5px ;
+	height:40px ;
+	width:40px ;
+	border-style: groove;
+	text-decoration: none;
+	color: black;
+}
+#forget{
+	color:black;
+	text-transform: capitalize;
+	text-decoration:none;
+}
+#field{
+	margin: 5px 0px 10px 0px;
+	padding: 10px;
+	border: 0px;
+	background: #e2e2e2;
+	/* text-align: center; */
+	width: 250px;
+	font-size:medium;
+}
+#submit{
+	margin: 15px;
+	padding:10px;
+	width: 200px;
+	color:aliceblue;
+	cursor: pointer;
+	border: 2px solid ;
+	font-size:medium;
+	text-transform: capitalize;
+	border-radius: 20px;
+	background: linear-gradient(to right, #ff4b2b, #ff416c);
+}
+#register{
+	padding:10px 50px 10px 50px;
+	width: 250px;
+	border: 2px solid white;
+	font-size:large;
+	color: white;
+	text-transform: capitalize;
+	text-decoration: none;
+	border-radius: 20px;
+	/* background: #d33a3a; */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

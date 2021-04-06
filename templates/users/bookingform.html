@@ -1,0 +1,51 @@
+{%load static%}
+{% load filters%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'bookingform.css'%}">
+</head>
+<body>
+    <div class="col2">
+        {% if messages%}
+        {% for message in messages%}
+        <div class="message  {{message.tags}}">
+            <h1>{{message}}</h1>
+        </div>
+        {%endfor%}
+        {%endif%}
+        
+        <form action="booking/" method="POST">
+            {%csrf_token%}
+            Phone No: <input type="number" name="mob" id="">
+            {{maxdate|date:'o-m-d'}}
+            Pick Up Date: <input type="date" name="pd" value="{{mydate|date:'o-m-d'}}" min="{{mindate|date:'o-m-d'}}" max="{{maxdate|date:'o-m-d'}}">
+            Pick up Time: <input type="time" name="pt" id="" value="{{mytime|time:'H:i'}}">
+            pick Up location: <input type="text" name="pl" id="">
+            Drop Date: <input type="date" name="dd" id="" min="{{mindate2|date:'o-m-d'}}" max="{{maxdate2|date:'o-m-d'}}" >
+            Drop Time: <input type="time" name="dt" id="">
+            Drop location: <input type="text" name="dl" id="">
+            <input type="submit">
+            
+        </form>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,462 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All vehicles</title>
+    <link rel="stylesheet" href="{% static 'homepage.css'%}">
+    <link rel="preconnect" href="static 'https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+    <div class="navigation">
+        <div class="navbar">
+            <div class="logo">
+                <h1>RIDE ON>>></h1>
+                {{user.email}}
+            </div>
+        
+        <nav class="active">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <!-- <li><a href="/listings/?category=All">Listings</a></li> -->
+                <li><a href="/listings/">Listings</a></li>
+
+                <!-- <li><a href="listings">Listings</a></li> -->
+                <li><a href="about">About us</a></li>
+                <li><a href="feedbacks">Feedbacks</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/Accounts/logout">logout</a></li></ul>
+                {% else %}
+                <li><a href="/Accounts/login">login</a></li>
+                <li><a href="Accounts/register">register</a></li>
+                {% endif %}
+                <a href="garage"><i class="fa fa-home" aria-hidden="true"></i></a>
+                
+            </ul>
+        </nav>
+        <i class="fa fa-bars" aria-hidden="true" width=40px height=40px onclick=""></i>
+        </div>
+        
+    </div>
+        <div class="row">
+            <div class="col2">
+                <h1>{{user.username}}</h1>
+                <h1>Make Plan <br>Make it Better <br>THE PERFECT RENTAL</h1>
+                <p>Book for any ocassions</p>
+                <a href="" class="btn">Explore Now &#8669;</a>
+            </div>
+            <div class="col2">
+                <!-- <img src="cars/home1.png" alt=""> -->
+            </div>
+        </div>
+    </header>
+   
+    <!-- categories -->
+    <div class="newcontainer" id="details">
+     <div class="newrow">
+        
+        <form action="/listings/" method="GET">
+            <input type="text" name="City" id="ct" placeholder="City" required>
+            <!-- <select name="catid" id="sb"> -->
+                <!-- {%for m in man%} -->
+                <!-- <option value="{{m.id}}">{{m.Add_New_Category}}</option> -->
+                <!-- {%endfor%} -->
+                <!-- <option value="All" selected>All</option> -->
+            <!-- </select> -->
+            <input type="date" name="start_date" id="pd" placeholder="Pickup Date" value="{{mydate|date:'o-m-d'}}" min="{{mindate|date:'o-m-d'}}" max="{{maxdate|date:'o-m-d'}}" required>
+            <input type="time" name="start_time" id="pt" placeholder="Pick up time" value="{{mytime|time:'H:i'}}" required>
+            <input type="date" name="End_date" id="dd" placeholder="Drop Date" min="{{mindate2|date:'o-m-d'}}" max="{{maxdate2|date:'o-m-d'}}"  required>
+            <input type="time" name="End_time" id="dt" placeholder="Drop time" value="{{mytime|time:'H:i'}}" required>
+            <input type="submit" name="" id="st" value="Search">
+        </form>
+        
+    </div>
+    </div>
+    <div class="container">
+        <h2 class="title">All Categories</h2>
+        <div class="row">
+            {%for m in man%}
+            <div class="col3">
+                <a href="/listings/?category={{m.id}}">
+                <!-- <a href=#details> -->
+                <img src="{{m.Category_vehicle_img.url}}" alt="">
+                <h3>{{m.Add_New_Category}}</h3>
+                </a>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+    <!-- featured products -->
+    <div class="container">
+        <h2 class="title">Featured Product</h2>
+        <div class="row">
+            {% for vehicle in vehicles%}
+            <div class="col4">
+                <img src="{{vehicle.Front_img.url}}" alt="">
+                <h3>{{vehicle.Vehicle_name}}</h3>
+                <h5>{{vehicle.Gear_type}}</h5>
+                <h5>{{vehical.Fuel_type}}</h5>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    <!-- testimonial -->
+    <div class="testimonial">
+        <div class="container">
+            <div class="row">
+                <div class="col4">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <i class="fas fa-gas-pump" aria-hidden="true"></i>
+                    <h5>lorem ispum is standard template and yes we are using this since long</h5>
+                    <img src="cars/download (5).png" alt="">
+                    <h3>dumy user</h3>
+                </div>
+                <div class="col4">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <h5>lorem ispum is standard template and yes we are using th</h5>
+                    <img src="cars/download (5).png" >
+                    <h3>dumy user</h3>
+                </div>
+                <div class="col4">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <h5>lorem ispum is standard template and yes we a</h5>
+                    <img src="cars/download (5).png" >
+                    <h3>dumy user</h3>
+                </div>
+                <div class="col4">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <h5>lorem ispum is standard template and yes we a</h5>
+                    <img src="cars/download (5).png" >
+                    <h3>dumy user</h3>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <!-- Brands -->
+    <div class="brands">
+        <div class="container">
+            <div class="row">
+                {% for m in man2%}
+                <div class="col5">
+                    <img src="{{m.Add_Company_Logo.url}}" alt="">
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+   
+<!-- ----------footer------- -->
+    <div class="footer">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Useful links</h3>
+                    <ul>
+                        <li>Return policy</li>
+                        <li>terms</li>
+                    </ul>
+                </div>
+                <div class="footer-col-2">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h6>Copyright Rideon 2021</h6>
+    </div>
+   
+   
+   
+   
+   
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>Document</title> -->
+<!-- </head> -->
+<!-- <body> -->
+{%extend 'listingss.html'%}
+    {%block content%}
+    <section class="seccategories">
+        <form action="/listings/" method="GET">
+        <h2 class=>Filter as per Requirements</h2><br>
+        <h1>Categories</h1>
+        <div class="categories">
+            <ul>
+            {% for c in categories%}
+            <li>
+                <input type="checkbox" name="Category[]" value="{{c.id}}" class="gt" id="checkbox">{{c.Add_New_Category}}
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <hr>
+        
+        <div class="companies">
+            <h1>Brands</h1>
+            <ul>
+            {%for b in companies%}
+            <li>
+                <input type="checkbox" name="Company_name[]" id="checkbox" value={{b.id}}>{{b.Add_New_Company}}
+            </li>
+            {%endfor%}
+            </ul>
+        </div>
+        <hr>
+        <div class="range">
+            <h1>Rent Cost/day</h1>
+           <input type="range" min="1" max="100" value="50" oninput="maxprice.value=this.value" class="slider" id="myRange">
+           max: <input type="number" name="" id="maxprice" onkeyup="myRange.value=this.value" min="0" max="100">
+        </div>
+        <hr>
+        <div class="Geartype">
+        <h1>Gear type</h1>
+        <ul>
+            <li>{{request.GET.Gear_type}}</li>
+            <li><input type="checkbox"  name="Gear_type[]" value="automatic"  class="gt"  > Auto </li>
+            <li><input type="checkbox"  name="Gear_type[]" value="manual" class="gt">manual </li>
+        </ul>
+        </div>
+        <hr>
+        <div class="Fueltype">
+            <h1>Fuel Type</h1>
+            <ul>
+            <li><input type="checkbox" name="Fuel_type[]" value="petrol" class="ft"> Petrol </li>
+            <li><input type="checkbox" name="Fuel_type[]" value="diesel" class="ft"> Diesel </li>
+            <li><input type="checkbox" name="Fuel_type[]" value="electric" id="ft">Electric </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="submit">
+           <input type="submit" value="Set Filter" id="submit">
+        </div>
+        </form>
+    </section> 
+    
+{%endblock%}  
+<!-- </body> -->
+<!-- </html> -->

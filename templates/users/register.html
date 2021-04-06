@@ -1,0 +1,56 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'register.css'%}">
+    <title>registration</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col1">
+                <h1>Register</h1>
+                <p>with</p>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+                </div>
+                {%for message in messages%}
+                <div class="message {{message.tags}}">
+                    {{message}}
+                </div>
+                {%endfor%}
+                <p>or</p>
+                <form action="register" method="POST">
+                    {% csrf_token%}
+                    <input type="text" name="firstname" placeholder="first name" id="field" required> <br>
+                    <input type="email" name="email" placeholder="email" id="field" required> <br>
+                    <input type="text" name="username" placeholder="username" id="field"> <br>
+                    <input type="password" name="pass1" placeholder="password" id="field" required> <br>
+                    <input type="submit" name="" id="submit" value="Register">
+                </form>
+            </div>
+            <div class="col2">
+                <h1>Hii</h1>
+                <h1>Already Have Account?</h1> <br>
+                <a href="/Accounts/login" id="login" >Login Now</a>
+
+            </div>
+        </div>
+    </div>
+    <!-- {{form.as_p}} -->
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

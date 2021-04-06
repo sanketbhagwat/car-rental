@@ -1,0 +1,354 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All vehicles</title>
+    <link rel="stylesheet" href="{% static 'base.css'%}">
+    <link rel="preconnect" href="static 'https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="navigation">
+        <div class="navbar">
+            <div class="logo">
+                <h1>RIDE ON>>></h1>
+                {{user.email}}
+            </div>
+        
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/listings/?category=All">All Listings</a></li>
+                <li><a href="about">About us</a></li>
+                <li><a href="feedbacks">Feedbacks</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/Accounts/logout">logout</a></li></ul>
+                {% else %}
+                <li><a href='/Accounts/login/?next={{ request.path }}'>Login</a> </li>
+                <li><a href="/Accounts/register">register</a></li>
+                {% endif %}
+                <a href="garage"><i class="fa fa-home" aria-hidden="true"></i></a>
+                
+            </ul>
+        </nav>
+        <i class="fa fa-bars" aria-hidden="true" width=40px height=40px onclick=""></i>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}   
+   
+<!-- ----------footer------- -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Useful links</h3>
+                    <ul>
+                        <li>Return policy</li>
+                        <li>terms</li>
+                    </ul>
+                </div>
+                <div class="footer-col-2">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h6>Copyright Rideon 2021</h6>
+        </div>
+    </div>
+   
+   
+   
+   
+   
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

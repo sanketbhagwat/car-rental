@@ -1,0 +1,8 @@
+.message.info{
+    background:lightblue;
+    color:black
+}
+.message.error{
+    background:#d33a3a;
+    color :black;
+}

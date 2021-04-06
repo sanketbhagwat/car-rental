@@ -1,0 +1,186 @@
+{% extends 'users/base.html'%}
+{%load static%}
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>All vehicles</title> -->
+   
+    <!-- <link rel="preconnect" href="static 'https://fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<!-- </head> -->
+<!-- <body> -->
+<!--      -->
+    <!-- <div class="navigation"> -->
+        <!-- <div class="navbar"> -->
+            <!-- <div class="logo"> -->
+                <!-- <h1>RIDE ON>>></h1> -->
+                <!-- {{user.email}} -->
+            <!-- </div> -->
+<!--          -->
+        <!-- <nav> -->
+            <!-- <ul> -->
+                <!-- <li><a href="">Home</a></li> -->
+                <!-- <li><a href="">Listings</a></li> -->
+                <!-- <li><a href="">About us</a></li> -->
+                <!-- <li><a href="">Feedbacks</a></li> -->
+                <!-- {% if user.is_authenticated %} -->
+                <!-- <li><a href="Accounts/logout">logout</a></li></ul> -->
+                <!-- {% else %} -->
+                <!-- <li><a href="Accounts/login">login</a></li> -->
+                <!-- <li><a href="Accounts/register">register</a></li> -->
+                <!-- {% endif %} -->
+                <!-- <a href="/garage"><i class="fa fa-home" aria-hidden="true"></i></a> -->
+<!--                  -->
+            <!-- </ul> -->
+        <!-- </nav> -->
+        <!-- <i class="fa fa-bars" aria-hidden="true" width=40px height=40px onclick=""></i> -->
+        <!-- </div> -->
+<!--  -->
+<!--      -->
+{%block content%}
+ <link rel="stylesheet" href="{% static 'garage.css'%}">
+        <div class="row newrow">
+            {%if user.is_authenticated%}
+                {%if bookings%}
+                    {%for c in cardet%} 
+                        <div class="col3">
+                            <img src="{{c.Front_img.url}}" alt="">
+                        </div>
+                        <div class="col4">
+                        {% for b in bookings%}
+                            <div class="row headrow">
+                                <h1>{{c.Category}}</h1>
+                                <h1>{{c.Vehicle_name}}</h1>
+                            </div>
+                                <h4>BOOK FROM:{{b.pickd}}</h4>
+                                <h4>PICK TIME:{{b.pickt}}</h4>
+                                <h4>PICK UP LOCATION:{{b.pickl}}</h4>
+                                <h4>BOOK UPTO:{{b.dropd}}</h4>
+                                <h4>DROP TIME:{{b.dropt}}</h4>
+                                <h4>DROP LOCATION:{{b.dropl}}</h4>
+                                <h4>TOTAL AMOUNT:5000rs</h4>
+
+                            {% if b.status%}
+                                <h1 class="comp">completed</h1>
+                                <a href="return" class="btn1">RETURN</a>
+                                <a href="update-booking" class="btn2">Extend info</a>
+
+                            {%else%}
+                                <h1 class="del">Delevering</h1>
+                                <a href="cancel" class="btn1">Cancel</a>
+                            {%endif%}
+        
+                        {% endfor %}
+                        </div>
+                    {%endfor%}
+                {%else%}
+                    <div class="imag">
+                        <img src="static/images/garage.jpg" alt="">
+                    </div>
+                    <div class="info" >
+                        <h2>Make Plan<br>Make Booking</h2><br>
+                        <a href="listings/">Book Now</a>
+                    </div>
+                {%endif%}
+            {% else %}
+            <h1>Better If you login</h1>
+            {% endif %}
+        </div>
+        
+        
+        
+
+
+
+{%endblock%}
+        ----------footer-------
+    <!-- <div class="footer"> -->
+        <!-- <div class="container"> -->
+            <!-- <div class="row"> -->
+                <!-- <div class="footer-col-1"> -->
+                    <!-- <h3>Useful links</h3> -->
+                    <!-- <ul> -->
+                        <!-- <li>Return policy</li> -->
+                        <!-- <li>terms</li> -->
+                    <!-- </ul> -->
+                <!-- </div> -->
+                <!-- <div class="footer-col-2"> -->
+                    <!-- <h3>Follow us</h3> -->
+                    <!-- <ul> -->
+                        <!-- <li>Facebook</li> -->
+                        <!-- <li>Twitter</li> -->
+                        <!-- <li>Instagram</li> -->
+                        <!-- <li>Youtube</li> -->
+                    <!-- </ul> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <hr> -->
+            <!-- <h6>Copyright Rideon 2021</h6> -->
+        <!-- </div> -->
+    <!-- </div> -->
+   
+   
+   
+   
+   
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

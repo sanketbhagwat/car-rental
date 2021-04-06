@@ -1,0 +1,377 @@
+
+
+{% extends 'base.html'%}
+{%load static%}
+{%load filters%}
+
+{% block content%}
+<link rel="stylesheet" href="{% static 'listings.css'%}">
+<div class="container">
+        <div class="newrow" >
+            <div class="newcol1">
+                <form action="./?next={{ redirect_to }}" method="POST">
+                    {%csrf_token%}
+                    <input type="text" name="ctt" id="ct" value="{{request.session.city}}" placeholder="City">
+                    <select name="catid" id="sb">
+                        <option value="{{request.session.category}}" selected>{{request.session.category_name}}</option>
+                        {%for m in manages%}
+                        <option value="{{m.id}}" >{{m.Add_New_Category}}</option>
+                        {%endfor%}
+                        <option value="All">All</option>
+                    </select>
+                    <input type="date" name="pdd" id="pd" value="{{request.session.pickd}}" min="{{mindate|date:'o-m-d'}}" max="{{maxdate|date:'o-m-d'}}" required>
+                    <input type="time" name="ptt" id="pt" value="{{request.session.pickt}}" placeholder="Pick up time" required>
+                    <input type="date" name="ddd" id="dd" value="{{request.session.dropd}}" min="{{mindate2|date:'o-m-d'}}" max="{{maxdate2|date:'o-m-d'}}" required>
+                    <input type="time" name="dtt" id="dt" value="{{request.session.dropt}}" placeholder="Drop time" required>
+                    <input type="submit" name="" id="st" value="Car for this">
+                    
+                </form>
+            </div>
+            <div class="newcol2">
+                <!-- <form action="./?next={{ redirect_to }}" method="POST"> -->
+                    <!-- {%csrf_token%} -->
+                <select name="selection" id="" class="selectionbox">
+                    <button><option value="0">---Sort by----</option></button>
+                    <button><option value="1">By lower rent</option></button>
+                    <button><option value="2">By higher rent</option></button>
+                </select>
+            <!-- </form> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col1">
+                    <section class="seccategories">
+                        <form action="/listings/" method="GET">
+                        <h2 class=>Filter as per Requirements</h2><br>
+                        <h1>Categories</h1>
+                        <div class="row">
+                         <ul>
+                            <div class="col3">
+                               <li>
+                                <input type="checkbox"  name="category[]" value="All" class="gt">All
+                            </li>
+                            </div>
+                            {% for v in manages%}
+                            <div class="col3">
+                            <li>
+                                <input type="checkbox" name="category[]" value="{{v.id}}" class="gt" >{{v.Add_New_Category}}
+                                </li>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                        </div>
+                        <hr>
+                        
+                        <!-- <div class="range"> -->
+                            <!-- <h1>Rent Cost/day</h1> -->
+                           <!-- <input type="range" min="1" max="100" value="50" oninput="maxprice.value=this.value" class="slider" id="myRange"> -->
+                           <!-- max: <input type="number" name="" id="maxprice" onkeyup="myRange.value=this.value" min="0" max="100"> -->
+                       <!-- </div> -->
+                        <hr>
+                        <div class="Geartype">
+                        <h1>Gear type</h1>
+                            <input type="checkbox"  name="Geartype[]" value="1" class="gt"> Auto <br>
+                            <input type="checkbox"  name="Geartype[]" value="2" class="gt">manual
+                        </div>
+                        <hr>
+                        <div class="Fueltype">
+                            <h1>Fuel Type</h1>
+                            <input type="checkbox" name="Fueltype[]" class="ft"> Petrol <br>
+                            <input type="checkbox" name="Fueltype[]" class="ft"> Diesel
+                        </div>
+                        <hr>
+                        <div class="submit">
+                           <input type="submit" value="Set Filter" id="submit">
+                        </div>
+                        </form>
+                    </section>   
+            </div>
+            <div class="col2">
+                <div class="row">
+                    {% for p in pro %}
+                    <div class="col4">
+                        <a href="/booking/?ids={{p.id}}">Boook Now</a>
+                        <img src="{{p.Front_img.url}}" alt="">
+                        <h3>{{p.Vehicle_name}}</h3>
+                        <h5>{{p.Gear_type}}</h5>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div >
+                    <span class="btn-2">
+                        {%if pro.has_previous%}
+                        <a href="?page={{pro.previous_page_number}}"><strong>&#8668;</strong></a>
+                        {%endif%}
+                        <span class="btn-2">{{pro.number}}</span>
+                        {%if pro.has_next%}
+                        <a href="?page={{pro.next_page_number}}"> <strong>&#8669;</strong> </a>
+                        {%endif%}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

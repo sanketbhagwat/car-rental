@@ -1,0 +1,70 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'login.css'%}">
+    <title>login</title>
+</head>
+<body >
+    <!-- style="background:linear-gradient(#4bcaca,white);" -->
+    <!-- <img src="\static\images\car-wallpaper-14297320.jpg" alt="" width="100%"> -->
+    <div class="container">
+    
+       
+        <div class="row">
+            <div class="col1">
+                <h1>LogIn</h1>
+                <p>with</p>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+                </div>
+                {%for message in messages%}
+                <div class="message {{message.tags}}">
+                    {{message}}
+                </div>
+                {%endfor%}
+                <p>or</p>
+                <form action="" method="POST">
+                    {%csrf_token%}
+                    <input type="text" name="username" placeholder="username" id="field" > <br>
+                    <input type="password" name="password" placeholder="password" id="field"> <br>
+                    <a href="/forgetpassword" id="forget">forget password?</a> <br>
+                    <input type="submit" value="login" id="submit">
+                    {%if request.next%}
+                    <input type="text" name="next" id="" value="{{request.GET.next}}">
+                    {%endif%}
+                </form>
+
+            </div>
+            <div class="col2">
+                <h1>Hello,</h1>
+                <h1>Start Your Ride With Us</h1> <br>
+                <a href="/Accounts/register" id="register">Register Now</a>
+            </div>
+        </div>
+    </div>
+
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+</body>
+</html>

@@ -1,0 +1,178 @@
+
+
+{% extends 'users/base.html'%}
+{%load static%}
+{%load filters%}
+
+{% block content%}
+<link rel="stylesheet" href="{% static 'listings.css'%}">
+<div class="container">
+        <div class="newrow" >
+            <div class="newcol1">
+                <!-- <form action="./?next={{ redirect_to }}" method="GET"> -->
+                    <form action=/listings/ method="GET">
+                        <input type="text" name="City" id="ct" value="{{request.session.City}}" placeholder="City">
+                    <!-- <select name="catid" id="sb"> -->
+                        <!-- <option value="{{request.session.Category}}" selected>{{request.session.category_name}}</option> -->
+                        <!-- {%for m in categories%} -->
+<!--                         -->
+                        <!-- <option value="{{m.id}}" {%if request.session.category_name and m.Add_New_Category%}selected{%endif%} >{{m.Add_New_Category}}</option> -->
+                        <!-- {%endfor%} -->
+                        <!-- <option value="All">All</option> -->
+                    <!-- </select> -->
+                    {{request.session.start_date|date:'o-m-d'}}
+                    <!-- {{mindate|date:'d-m-o'}} -->
+                    <input type="date" name="start_date" id="pd" value="{{request.session.start_date|date:'o-m-d'}}" min="{{mindate|date:'o-m-d'}}" max="{{maxdate|date:'o-m-d'}}" required>
+                    <input type="time" name="start_time" id="pt" value="{{request.session.satrt_time}}" placeholder="Pick up time" required>
+                    <input type="date" name="End_date" id="dd" value="{{request.session.End_date|date:'o-m-d'}}" min="{{mindate2|date:'o-m-d'}}" max="{{maxdate2|date:'o-m-d'}}" required>
+                    <input type="time" name="End_time" id="dt" value="{{request.session.End_time}}" placeholder="Drop time" required>
+                    <input type="submit" name="" id="st" value="Car for this">
+                   
+                    
+                </form>
+            </div>
+            <!-- <div class="newcol2"> -->
+                <!-- <form action="./?next={{ redirect_to }}" method="POST"> -->
+                    <!-- {%csrf_token%} -->
+                <!-- <select name="selection" id="" class="selectionbox"> -->
+                    <!-- <button><option value="0">---Sort by----</option></button> -->
+                    <!-- <button><option value="1">By lower rent</option></button> -->
+                    <!-- <button><option value="2">By higher rent</option></button> -->
+                <!-- </select> -->
+            <!-- </form> -->
+            <!-- </div> -->
+        </div>
+        <div class="row">
+            <div class="col1">
+                    <section class="seccategories">
+                        <form action="/listings/" method="GET">
+                        <h2 class=>Filter as per Requirements</h2><br>
+                        <h1>Categories</h1>
+                        <div class="categories">
+                            <ul>
+                            {% for c in categories%}
+                            <li>
+                                <input type="checkbox" name="Category" value="{{c.id}}" class="gt" >{{c.Add_New_Category}}
+                            </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        <hr>
+                        
+                        <div class="companies">
+                            <h1>Brands</h1>
+                            <ul>
+                            {%for b in companies%}
+                            <li>
+                                <input type="checkbox" name="Company_name"  value="{{b.id}}">{{b.Add_New_Company}}
+                            </li>
+                            {%endfor%}
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="range">
+                            <h1>Rent Cost/day</h1>
+                            <ul>
+                          <li> <input type="range" min="1" max="100" value="50" oninput="maxprice.value=this.value" class="slider" id="myRange"></li>
+                          <li> max: <input type="number" name="" id="maxprice" onkeyup="myRange.value=this.value" min="0" max="100"></li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="Geartype">
+                        <h1>Gear type</h1>
+                        <ul>
+
+                            
+                            <li><input type="checkbox"  name="Gear_type" value="automatic" > Auto </li>
+                            <li><input type="checkbox"  name="Gear_type" value="manual" >manual </li>
+                        </ul>
+                        </div>
+                        <hr>
+                        <div class="Fueltype">
+                            <h1>Fuel Type</h1>
+                            <ul>
+                            <li><input type="checkbox" name="Fuel_type" value="petrol" > Petrol </li>
+                            <li><input type="checkbox" name="Fuel_type" value="diesel" > Diesel </li>
+                            <li><input type="checkbox" name="Fuel_type" value="electric" >Electric </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="submit">
+                           <input type="submit" value="Set Filter" id="submit">
+                        </div>
+                        </form>
+                    </section>   
+            </div>
+            <div class="col2">
+               <div class="row">
+                    {% for p in pro %}
+                    <div class="col4">
+                        <div class="col4row">
+                            <h2>{{p.Company_name}}  {{p.Vehicle_name}}</h2> 
+                        </div>
+                        <img src="{{p.Front_img.url}}" alt="" id="img">
+                        <table>
+                            <tr>
+                                <th><img src="\static\icon\005-gas-station.png" alt="" width="20px"> </th>
+                                <th><img src="\static\icon\006-gearbox.png" alt="" width="20px"></th>
+                                <th><img src="\static\icon\group.png" alt="" width="20px"></th>
+                                <th id="th" rowspan="2"><img src="\static\icon\rupee-indian.png" width="15px"> {{p.Rent_cost}} <br><h5>/Day</h5></th>
+                            </tr>
+                            <tr>
+                                <td>{{p.Fuel_type}}</td>
+                                <td>{{p.Gear_type}}</td>
+                                <td>{{p.Seat_capacity}}</td>
+                            </tr>
+                        </table>
+                        <div class="col4row2">
+                            <a href="/addtogarage" id="addgarage">Garage</a>
+                            <a href="/booking/?ids={{p.id}}" id="booknow">Boook Now</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div >
+                    
+                    <span class="btn-2">
+                        
+                        {%if pro.has_previous%}
+                        <a href="{{request.get_full_path}}?page={{pro.previous_page_number}}"><strong>&#8668;</strong></a>
+                        {%endif%}
+                        <span class="btn-2">{{pro.number}}</span>
+                        {%if pro.has_next%}
+                        <a href="{{request.get_full_path}}?page={{pro.next_page_number}}"> <strong>&#8669;</strong> </a>
+                        {%endif%}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

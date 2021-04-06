@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+{% extends 'users/base.html'%}
+{% load static%}
+
+
+
+{% block content %}
+
+    <link rel="stylesheet" href="{%static 'update.css'%}">
+<div class="">
+    {%for b in booking%}
+    <form action="update-booking" method="POST">
+    {%csrf_token%}
+    Phone No: {{b.Phone}} <br>
+    Pick Up Date: {{b.pickd}} <br>
+    Pick up Time: {{b.pickt}} <br>
+    pick Up location:{{b.pickl}} <br>
+    Drop Date: <input type="date" name="dd" id="dd" value="{{b.dropd|date:'o-m-d'}}">
+    Drop Time: <input type="time" name="dt" id="" value="{{b.dropt|time:'H:i'}}">
+    Drop location: <input type="text" name="dl" id="" value="{{b.dropl}}">
+    <input type="submit">
+    {%endfor%}
+    </form>
+</div>
+{% endblock %}
+     

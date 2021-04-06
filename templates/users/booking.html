@@ -1,0 +1,256 @@
+{% extends 'users/base.html'%}
+{%load static%}
+{% block content %}
+<link rel="stylesheet" href="{% static 'booking.css'%}">
+<div class="newcontainer">
+    <div class="secondrow">
+        {% for c in car%}
+        <div class="secondcol1">
+            <div class="col1">
+                <h1>{{c.Category}}/{{c.Company_name}}/{{c.Vehicle_name}}</h1>
+            </div>
+            <div class="col2">
+                <div class="subcol1">
+                    <img src="{{c.Front_img.url}}" alt="img here">
+                </div>
+                <div class="subcol2">
+                    <img src="{{c.Front_img.url}}" alt="img here">
+                    <img src="{{c.Side_img.url}}" alt="img here" >
+                    <img src="{{c.Rear_img.url}}" alt="img here" >
+                    <img src="{{c.Front_img.url}}" alt="img here" >
+                </div>
+            </div>
+            <div class="col3">
+                <table>
+                    <tr id="tr">
+                        <th id="th"><img src="\static\icon\conveyor.png" alt="" width="30px"></th>
+                        <th id="th"><img src="\static\icon\007-medium.png" width="30px"> <br></th>
+                        <th id="th"><img src="\static\icon\005-gas-station.png" alt="" width="30px"> <br></th>
+                        <th id="th"><img src="\static\icon\006-gearbox.png" alt="" width="30px"> <br></th>
+                        <th id="th"><img src="\static\icon\group.png" alt="" width="30px"> <br></th>
+                        <th id="th"><img src="\static\icon\air.png" alt="" width="30px"></th>
+                        <th id="th"><img src="\static\icon\suitcase (1).png" alt="" width="30px"></th>
+                        <th id="th"><img src="\static\icon\008-music.png" alt="" width="30px"></th>
+                        <th id="th"><img src="\static\icon\003-air-conditioner.png" alt="" width="30px"></th>
+                        <th id="th"><img src="\static\icon\002-protection.png" alt="" width="30px"></th>
+                        <th id="thh">Your Total Rent <img src="\static\icon\rupee-indian.png" alt="" width="20px"></th>
+                    </tr>
+                    <tr id="tr">
+                        <td id="td">2010</td>
+                        <td id="td"> 1000Km</td>
+                        <td id="td">{{c.Fuel_type}}</td>
+                        <td id="td">{{c.Gear_type}}</td>
+                        <td id="td">{{c.Seat_capacity}}</td>
+                        <td id="td">Yes</td>
+                        <td id="td">Yes</td>
+                        <td id="td">Yes</td>
+                        <td id="td">Yes</td>
+                        <td id="td">Yes</td>
+                        <td id="tdd"><h2>3000</h2></td>
+                    </tr>
+                </table>
+                {%endfor%}
+                </div>
+                <div class="col4">
+                    <div class="navrow">
+                    <nav>
+                        <ul>
+                            <li><a href="#aboutus">About Car</a></li>
+                            <li><a href="#terms">Terms And Conditions</a></li>
+                        </ul>
+                    </nav>
+                    </div>
+                </div>
+        </div>
+        <div class="secondcol2">
+                <div class="scol1">
+                    <h1>BOOKING DETAILS</h1>
+                </div>
+                {% if messages%}
+                {% for message in messages%}
+                <div class="message  {{message.tags}}">
+                    <h1>{{message}}</h1>
+                </div>
+                {%endfor%}
+                {%endif%}
+                <div class="scol2">
+                        <form action="/booking/" method="POST">
+                            {%csrf_token%}
+                        <table>
+                            <tr>
+                                <td><h2>Extra Benefits And Fees</h2></td>
+                            </tr>
+                        
+                            <tr>
+                                <td><h3>Pick Up Date:</h3></td>
+                                <td><h3>Pick Up time:</h3></td>
+                            </tr>
+                            <tr>
+                                <td><input type="date" name="pd" id="pd" value="{{request.session.start_date}}"></td>
+                                <td><input type="time" name="pt" id="pt" value="{{request.session.start_time}}"></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Drop Date:</h3></td>
+                                <td><h3>Drop Time:</h3></td>
+                            </tr>
+                            <tr>
+                                <td><input type="date" name="dd" id="dd" value="{{request.session.End_date}}"></td>
+                                <td><input type="time" name="dt" id="dt" value="{{request.session.End_time}}"></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Pick Up Location:*</h3></td>
+                                <td><h3>Drop Up Location:*</h3></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="pl" id="pl" placeholder="Car pick up location">
+                                        <option value="Chice1">choice1</option>
+                                        <option value="Chice1">choice2</option>
+                                        <option value="Chice1">choice2</option>
+                                        <option value="Chice1">choice2</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="dl" id="dl" aria-placeholder="Car Drop Location">
+                                        <option value="Chice1">choice1</option>
+                                        <option value="Chice1">choice2</option>
+                                        <option value="Chice1">choice2</option>
+                                        <option value="Chice1">choice2</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="scol3">
+                    <table>
+                        <tr>
+                        <td><h2>Personal Information</h2></td>
+                        </tr>
+                        <tr>
+                        <td><h3>Name:*</h3></td>
+                        </tr>
+                        <tr>
+                           <td> <input type="text" name="" id="fnm" required placeholder="First" ></td>
+                           <td> <input type="text" name="" id="lnm"  required placeholder="Last"></td>
+                        </tr>
+                        <tr>
+                            <td><h3>Email:*</h3></td>
+                            <td><h3>Phone:*</h3></td>
+                        </tr>   
+                                                    
+                        <tr>
+                            <td><input type="email" name="" id="em" required placeholder="Email"></td>
+                            <td><input type="text" name="mob" id="ph" required placeholder="### ### ####"></td>
+                        </tr>
+                     </table>
+                </div>
+                <div class="scol4">
+                    <table>
+                        <tr>
+                            <td><h2>Payment</h2></td>
+                        </tr>
+                        <tr>
+                            <td><h3>Total Amount:</h3></td>
+                            <td><h3>Payment Mode:</h3></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="" id="ta" placeholder="Cost"></td>
+                            <td><select name="" id="pm">
+                                <option value="">Online</option>
+                                <option value="">Offline</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><h3>Note For Us:</h3></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><textarea name="" id="no" cols="20" rows="4"></textarea></td>
+                        </tr>
+
+                    </table>
+                    <input type="submit" value="Confirm Booking" id="submit">
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="thirdrow">
+        <div class="contact">
+            Hey contact here
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+{%endblock%}
+   
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
